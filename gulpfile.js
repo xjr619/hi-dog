@@ -53,7 +53,17 @@
  	}));
 
  });
- 
+ gulp.task('html2',function(){
+  gulp.src('src/html/*.html')
+    .pipe(htmlmin({collapseWhitespace:true,
+      removeComments:true,
+    }))
+  .pipe(gulp.dest('dist/html'))
+  .pipe(browserSync.reload({
+    stream:true
+  }));
+
+ });
 
  gulp.task('serve',function(){
       browserSync({server: {
@@ -64,9 +74,9 @@
     console.log(bs.options.getIn(["urls", "local"]));
 	});
       gulp.watch('src/styles/*.css',['style']);
-     
       gulp.watch('src/scripts/*.js',['script']);
       gulp.watch('src/*.html',['html']);
+      gulp.watch('src/html/*.html',['html2']);
       gulp.watch('src/images/*.*',['image']);
 
  });

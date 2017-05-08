@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>vueday1</title>
+	<title>表单的运用</title>
 	<link rel="stylesheet" type="text/css" href="../styles/bootstrap.min.css">
 	<script src="../scripts/jquery-1.7.2.js"></script>
 	<script src="../scripts/bootstrap.js"></script>
@@ -46,9 +46,14 @@
 
 		function titChange(){
 
-		   var t=document.getElementsByClassName("modal-title");
-			alert(t.nodeType);
+		   var t=document.getElementsByClassName("modal-title")[0];
+			t.innerText="确定全部删除？";
+
 		}
+		function titres(){
+			var t=document.getElementsByClassName("modal-title")[0];
+			t.innerText="确定删除？";
+		};
 	</script>
 </head>
 <body>
@@ -86,7 +91,7 @@
 					<td>{{item.name}}</td>
 					<td>{{item.age}}</td>
 					<td><button class="btn btn-info btn-sm" data-toggle="modal"
-					data-target="#layer" v-on:click="nowIndex=$index">删除</button>
+					data-target="#layer" v-on:click="nowIndex=$index" onclick="titres()">删除</button>
 					</td>
 				</tr>
 				<tr class="text-right" v-show="myData.length!=0">
