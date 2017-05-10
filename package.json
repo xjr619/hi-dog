@@ -1,8 +1,8 @@
 {
-  "name": "gulpdemo",
+  "name": "vuejs",
   "version": "1.0.0",
-  "description": "1.命令行创建npm配置文件\r 2.",
-  "main": "index.js",
+  "description": "",
+  "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

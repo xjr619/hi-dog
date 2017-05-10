@@ -1,0 +1,21 @@
+{
+  "name": "vuejs",
+  "description": "",
+  "main": "",
+  "authors": [
+    "xjr <619854442@qq.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/xjr619/hi-dog",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "vue": "1.0.28",
+    "animate.css": "^3.5.2"
+  }
+}
