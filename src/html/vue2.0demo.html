@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style></style>
+    <script src="../scripts/vue2.0.js"></script>
+    <script>
+
+
+      window.onload=function(){
+      new Vue({
+          el:'#box',
+          data:{
+
+                  a:'我是父组件的数据',
+
+
+          },
+        components:{
+            'child-com':{
+                props:['msg'],
+                data(){
+                    return{
+                        b:''
+                    }
+          },
+           mounted(){
+              this.b=this.msg;
+          },
+                template:'#child',
+                methods:{
+                    change(){
+                   this.b='被更改了'
+          }
+                }
+
+
+            }
+        }
+
+      });
+        };
+    </script>
+</head>
+<body>
+    <template id="child">
+        <div>
+            <span>我是子组件</span>
+            <input type="button" value="按钮" @click="change"/>
+            <strong>{{b}}</strong>
+        </div>
+    </template>
+
+    <div id="box">
+        父级->{{a}}
+        <br/>
+        <child-com :msg="a"></child-com>
+    </div>
+
+
+</body>
+</html>

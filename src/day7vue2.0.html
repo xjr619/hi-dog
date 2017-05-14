@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        p {
+            width: 100px;
+            height:100px;
+            background: blue;
+            margin: 10px auto;
+
+
+        }
+
+
+    </style>
+    <script src="scripts/vue2.0.js"></script>
+    <link rel="stylesheet" href="styles/animate.css"/>
+    <script>
+       window.onload=function(){
+           new Vue({
+               el:'#box',
+               data:{
+
+                   show:'',
+                   list:['apple','banana','orange','pear']
+               },
+               computed:{
+                   lists:function(){
+                    var arr=[];
+                       this.list.forEach(function(val){
+                           if(val.indexOf(this.show)!=-1){
+                               arr.push(val);
+
+                           }
+
+                       }.bind(this));
+                       return arr;
+                   }
+               }
+
+
+
+           });
+       };
+    </script>
+</head>
+<body>
+        <div id="box">
+           <input type="text" v-model="show">
+
+            <transition-group enter-active-class="zoomInLeft" leave-active-class="zoomOutRight">
+
+                <p v-show ="show" class="animated" v-for="(val,index) in lists" :key="index" >
+                    {{val}}
+                </p>
+
+
+            </transition-group>
+
+
+        </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .router-link-active{
+            font-size:30px;
+            color: red;
+
+        }
+    </style>
+    <script src="../scripts/vue2.0.js"></script>
+    <script src="../scripts/vue-router.js"></script>
+    <link rel="stylesheet" href="../styles/animate.css"/>
+</head>
+<body>
+    <div id="box">
+        <input type="button" value="添加路由" @click="push">
+        <input type="button" value="替换路由" @click="replace">
+        <div>
+            <router-link to="/home">主页</router-link>
+            <router-link to="/user">用户</router-link>
+        </div>
+        <div>
+           <transition enter-active-class="animated bounceInLeft"
+                       leave-active-class=" animated bounceOutRight">
+               <router-view></router-view>
+           </transition>
+        </div>
+    </div>
+
+
+    <script >
+  //组件
+        var Home={
+           template:'<h3>我是主页</h3>'
+        };
+        var User={
+            template:`
+              <div>
+                      <h3>我是用户信息</h3>
+                      <ul>
+                              <li><router-link to="/user/Strive/age/10">Strive</router-link></li>
+                              <li><router-link to="/user/blue/age/80">blue</router-link></li>
+                              <li><router-link to="/user/red/age/18">red</router-link></li>
+                      </ul>
+                        <div>
+                        <router-view></router-view>
+                        </div>
+              </div>
+          `
+        };
+      var UserDetail={
+          template:'<div>{{$route.params}}</div>'
+      };
+  //配置路由
+        const routes=[
+            {path:'/home',component:Home},
+            {path:'/user',component:User,
+                children:[
+                    {path:':username/age/:age',component:UserDetail}
+                ]
+            },
+            {path:'*',redirect:'/home'}//404
+        ];
+  //生成路由实例
+       const router=new VueRouter({
+           routes:routes
+        });
+        //最后挂到vue上
+        new Vue({
+            router:router,
+            methods:{
+                push(){
+                      router.push({path:'/home'});
+                  },
+                replace(){
+                        router.replace({path:'user'});
+                  }
+            }
+
+        }).$mount('#box');
+    </script>
+</body>
+</html>
