@@ -1,46 +1,62 @@
 <template>
   <div id="app">
-   welcome
- 
+<el-button type="primary" icon="search">主要按钮</el-button>
+<el-button type="danger"  class="el-icon-edit">主要按钮</el-button>
+<el-row>
+    <el-col :span="12">
+          <div class="my-grid ">
+            
+          </div>
+    </el-col>
+    <el-col :span="12">
+        <div class="my-grid">
+          <Date></Date>
+        </div>
+    </el-col>
+</el-row>
+    <el-col :span="8">
+        <div class="my-grid">
+         
+        </div>
+    </el-col>
+     <el-col :span="8">
+        <div class="my-grid">
+           
+        </div>
+     </el-col>
+     <el-col :span="8">
+        <div class="my-grid">
+          
+        </div>
+     </el-col>
+<el-row>
+  
+</el-row>
   </div>
 </template>
 
 <script>
+import Date from './components/Date.vue'
 export default {
   name: 'app',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  components:{
+    Date
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped lang="less">
+@color:blue;
+.height(@h){
+  height:@h;
 }
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
+.my-grid{
+  border: 1px solid @color;
+  .height(50px);
 }
 </style>
